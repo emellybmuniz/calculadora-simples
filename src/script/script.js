@@ -1,63 +1,45 @@
-const display = document.getElementsByClassName('display')
-const numberKey = document.getElementsByClassName('key')
-const operatorKey = document.getElementsByClassName('operator')
-const clearKey = document.getElementsByClassName('dell')
-const equalsKey = document.getElementsByClassName('equal')
+const display = document.getElementsByClassName("display")[0];
+const numberKeys = document.getElementsByClassName("key");
+const operatorKeys = document.getElementsByClassName("operator");
+const clearKey = document.getElementsByClassName("dell")[0];
+const equalsKey = document.getElementsByClassName("equal")[0];
 
-
-document.addEventListener("keydown", e => {
-  if (isNaN(Number(e.key)) && !['+', '-', '*', '/', 'Backspace', 'Enter'].includes(e.key)) {
-    e.preventDefault()
+// impede a entrada de letras
+document.addEventListener("keydown", (e) => {
+  if (
+    isNaN(Number(e.key)) &&
+    !["+", "-", "*", "/", "Backspace", "Enter"].includes(e.key)
+  ) {
+    e.preventDefault();
   }
-})
+});
 
-document.addEventListener('click', e => {
+document.addEventListener("click", (e) => {
+  if (e.target.matches("button")) {
+    const key = e.target;
+    const action = key.dataset.action;
+    const keyContent = key.textContent;
+    const displayedNum = display.value;
 
-  if (e.target.matches('button')){
-    const key = e.target
-    const action = key.dataset.action
-    
     if (!action) {
-      console.log('key')
-      display.value += keyContent
-    }
-    
-  if (
-    action === 'clear' 
-  ) {
-    console.log('Clear key')
-    clearInput()
-  }
+      display.value += keyContent;
+    } else if (action === "clear") {
+      clearInput();
+    } else if (action === "equal") {
+      const result = eval(display.value.replace(/[^0-9+\-*/.]/g, ""));
+      display.value = result;
+    } else if (["add", "multiply", "subtract", "divide"].includes(action)) {
 
-  if (
-    action === 'equal' 
-  ) {
-    console.log('Equal key')
-  }
-  
-    if (
-      action === 'add' ||
-      action === 'multiply' ||
-      action === 'subtract' ||
-      action === 'divide'
-  ) {
-      console.log('operator!')
-      input.value += 'operator!'
+      // remove espaço antes de adicionar o operador
+      if (displayedNum && !/\s[+-/*]$/.test(displayedNum)) {
+        display.value += ` ${keyContent} `;
+      }
     }
   }
-
 });
 
-key.addEventListener('click', e =>{
-    if(e.target.matches('button')) {
-        const keycontent = e.target.textcontent
-        console.log('teste')
-        
-    }
-
-});
-
-const clearInput = () => {
-  display.input.value = ''
+function clearInput() {
+  display.value = "";
 }
 
+// adicionar evento de escuta no enter para mostrar resultados
