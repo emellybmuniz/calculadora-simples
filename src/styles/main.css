@@ -1,0 +1,91 @@
+:root {
+  --color1: #434a5e;
+  --color2: #464239;
+  --color3: #deb983;
+  --color4: #83d4de;
+  --color5: #839ade;
+}
+
+* {
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: var(--color2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-weight: 500;
+  height: 100vh;
+}
+.calculator {
+  background-color: var(--color1);
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  padding: 40px 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.427);
+  box-shadow: 4px 2px 3px rgba(0, 0, 0, 0.427);
+}
+
+p {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: white;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.436);
+  grid-area: cal;
+}
+
+.display {
+  align-self: center;
+  margin: 10px 0px;
+  padding: 15px 20px;
+  border: 0px;
+  border-radius: 4px;
+  outline: none;
+  font-size: 15px;
+  grid-area: display;
+  text-align: right;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.26);
+  font-size: 18px;
+}
+
+.calculator-keys {
+  display: grid;
+  grid-template-areas: 
+  "cal cal cal cal"
+  "display display display display"
+  "key key key key"
+  "key key key key"
+  "key key key key"
+  "key key key key";
+}
+
+
+.keys,
+.dell {
+  padding: 20px;
+  border-radius: 50%;
+  margin: 4px;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.342);
+}
+
+.keys:hover, .dell:hover, .submit:hover {
+  cursor: pointer;
+}
+
+.keys:active, .dell:active, .submit:active, .operator:active{
+  transform: scale(.95);
+}
+
+.operator {
+  background-color: #deb983;
+  color: white;
+  font-weight: bold;
+}
