@@ -28,7 +28,7 @@ body {
   flex-direction: column;
   width: fit-content;
   height: fit-content;
-  padding: 40px 20px;
+  padding: 40px 24px;
   border-radius: 10px;
   border: 2px solid rgba(0, 0, 0, 0.427);
   box-shadow: 4px 2px 3px rgba(0, 0, 0, 0.427);
@@ -72,14 +72,13 @@ p {
 
 .keys,
 .dell {
-  padding: 20px;
+  padding: 18px;
   border-radius: 50%;
   margin: 4px;
   box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.342);
 }
 .keys:hover, .dell:hover, .submit:hover {
   cursor: pointer;
-  transform: translate(0px, -3px);
 }
 
 .number:hover, .dell:hover, .submit:hover {
@@ -88,11 +87,16 @@ p {
   font-weight: bold;
 
 }
-
 .operator {
-  background-color: #deb983;
-  color: white;
+  background-color: var(--color3);
+  color: #fefefe;
+  font-size: 15px;
   font-weight: bold;
+}
+
+.operator:hover {
+  background-color: var(--color5);
+  color: #000;
 }
 
 .keys:active, .dell:active, .submit:active, .operator:active{
