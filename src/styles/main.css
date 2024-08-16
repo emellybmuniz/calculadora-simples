@@ -81,12 +81,6 @@ p {
   cursor: pointer;
 }
 
-.number:hover, .dell:hover, .submit:hover {
-  background-color: var(--color2);
-  color: white;
-  font-weight: bold;
-
-}
 .operator {
   background-color: var(--color3);
   color: #fefefe;
@@ -94,12 +88,22 @@ p {
   font-weight: bold;
 }
 
-.operator:hover {
-  background-color: var(--color5);
-  color: #000;
-}
-
 .keys:active, .dell:active, .submit:active, .operator:active{
   transform: scale(.95);
+}
+
+@media screen and (min-width:800px) {
+  .number:hover, .dell:hover, .submit:hover {
+    background-color: var(--color2);
+    color: white;
+    font-weight: bold;
+  
+  }
+
+  .operator:hover {
+    background-color: var(--color5);
+    color: #000;
+  }
+  
 }
 
