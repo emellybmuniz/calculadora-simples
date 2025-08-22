@@ -4,7 +4,7 @@ const operatorKeys = document.getElementsByClassName("operator");
 const clearKey = document.getElementsByClassName("dell")[0];
 const equalsKey = document.getElementsByClassName("equal")[0];
 
-// impede a entrada de letras
+// Prevent default behavior for number keys
 document.addEventListener("keydown", (e) => {
   if (
     isNaN(Number(e.key)) &&
@@ -52,7 +52,6 @@ function calculate(expression) {
 
     return result;
   } catch (e) {
-    // Catches syntax errors in the expression, e.g., "5 * " or "++".
     return "Conta inválida!";
   }
 }
