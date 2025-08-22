@@ -26,11 +26,9 @@ document.addEventListener("click", (e) => {
     } else if (action === "clear") {
       clearInput();
     } else if (action === "equal") {
-      const result = eval(display.value.replace(/[^0-9+\-*/.]/g, ""));
-      display.value = result;
+      display.value = calculate(display.value);
     } else if (["add", "multiply", "subtract", "divide"].includes(action)) {
 
-      // remove espaço antes de adicionar o operador
       if (displayedNum && !/\s[+-/*]$/.test(displayedNum)) {
         display.value += ` ${keyContent} `;
       }
@@ -38,8 +36,27 @@ document.addEventListener("click", (e) => {
   }
 });
 
+function calculate(expression) {
+  const sanitizedExpression = expression.replace(/[^0-9+\-*/.]/g, "");
+
+  if (!sanitizedExpression) {
+    return "";
+  }
+
+  try {
+    const result = new Function("return " + sanitizedExpression)();
+
+    if (!isFinite(result)) {
+      return "Conta inválida!";
+    }
+
+    return result;
+  } catch (e) {
+    // Catches syntax errors in the expression, e.g., "5 * " or "++".
+    return "Conta inválida!";
+  }
+}
+
 function clearInput() {
   display.value = "";
 }
-
-// adicionar evento de escuta no enter para mostrar resultados
